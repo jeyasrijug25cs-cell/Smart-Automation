@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Information Copilot</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background-grid"></div>
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h1>AI Information Copilot</h1>
+                <p>Intelligent Information Understanding & Processing</p>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            AI SYSTEM ONLINE
+        </div>
+    </header>
+
+
+    <!-- MAIN DASHBOARD -->
+    <main class="dashboard">
+
+        <!-- LEFT PANEL -->
+        <section class="panel documents-panel">
+
+            <div class="panel-header">
+                <div>
+                    <span class="section-label">INPUT</span>
+                    <h2>Documents</h2>
+                </div>
+
+                <span class="count-badge" id="documentCount">3</span>
+            </div>
+
+
+            <div class="upload-box" id="uploadBox">
+
+                <div class="upload-icon">↑</div>
+
+                <h3>Upload Information</h3>
+
+                <p>
+                    Documents, reports, forms,
+                    records and messages
+                </p>
+
+                <label class="upload-button">
+                    + Add Document
+                    <input type="file" id="fileInput" multiple hidden>
+                </label>
+
+            </div>
+
+
+            <div class="document-list" id="documentList">
+
+                <div class="document-card">
+                    <div class="file-icon pdf">PDF</div>
+
+                    <div class="document-info">
+                        <strong>Project_Report.pdf</strong>
+                        <span>2.4 MB • Processed</span>
+                    </div>
+
+                    <span class="document-status">✓</span>
+                </div>
+
+
+                <div class="document-card">
+                    <div class="file-icon doc">DOC</div>
+
+                    <div class="document-info">
+                        <strong>Requirements.docx</strong>
+                        <span>1.2 MB • Processed</span>
+                    </div>
+
+                    <span class="document-status">✓</span>
+                </div>
+
+
+                <div class="document-card">
+                    <div class="file-icon txt">TXT</div>
+
+                    <div class="document-info">
+                        <strong>Meeting_Notes.txt</strong>
+                        <span>24 KB • Processed</span>
+                    </div>
+
+                    <span class="document-status">✓</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CENTER AI CORE -->
+        <section class="core-section">
+
+            <div class="core-title">
+                <span class="section-label">PROCESSING ENGINE</span>
+
+                <h2>
+                    Understand
+                    <span>→</span>
+                    Detect
+                    <span>→</span>
+                    Prioritize
+                </h2>
+            </div>
+
+
+            <div id="three-container">
+
+                <div class="core-overlay">
+
+                    <div class="core-label">
+                        <span class="pulse"></span>
+                        AI CORE
+                    </div>
+
+                    <div class="core-status">
+                        ANALYZING INFORMATION
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROCESS FLOW -->
+            <div class="process-flow">
+
+                <div class="process-step active">
+                    <span>01</span>
+                    <strong>Upload</strong>
+                </div>
+
+                <div class="flow-line"></div>
+
+                <div class="process-step active">
+                    <span>02</span>
+                    <strong>Understand</strong>
+                </div>
+
+                <div class="flow-line"></div>
+
+                <div class="process-step active">
+                    <span>03</span>
+                    <strong>Detect</strong>
+                </div>
+
+                <div class="flow-line"></div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    <strong>Prioritize</strong>
+                </div>
+
+                <div class="flow-line"></div>
+
+                <div class="process-step">
+                    <span>05</span>
+                    <strong>Action</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT PANEL -->
+        <section class="panel insights-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-label">OUTPUT</span>
+                    <h2>Smart Insights</h2>
+                </div>
+
+                <span class="live-badge">LIVE</span>
+
+            </div>
+
+
+            <!-- INSIGHT -->
+            <div class="insight-card urgent">
+
+                <div class="insight-top">
+
+                    <span class="priority-tag high">
+                        HIGH PRIORITY
+                    </span>
+
+                    <span>⚠</span>
+
+                </div>
+
+                <h3>Deadline Detected</h3>
+
+                <p>
+                    Project submission deadline
+                    detected in Project_Report.pdf.
+                </p>
+
+                <div class="insight-action">
+                    <span>Action required</span>
+                    <strong>Tomorrow</strong>
+                </div>
+
+            </div>
+
+
+            <!-- INSIGHT -->
+            <div class="insight-card warning">
+
+                <div class="insight-top">
+
+                    <span class="priority-tag medium">
+                        MEDIUM
+                    </span>
+
+                    <span>◈</span>
+
+                </div>
+
+                <h3>Missing Information</h3>
+
+                <p>
+                    Required approval details are
+                    missing from Requirements.docx.
+                </p>
+
+                <div class="insight-action">
+                    <span>Status</span>
+                    <strong>Review</strong>
+                </div>
+
+            </div>
+
+
+            <!-- INSIGHT -->
+            <div class="insight-card success">
+
+                <div class="insight-top">
+
+                    <span class="priority-tag normal">
+                        NORMAL
+                    </span>
+
+                    <span>✓</span>
+
+                </div>
+
+                <h3>Information Matched</h3>
+
+                <p>
+                    Meeting notes match the
+                    project requirements.
+                </p>
+
+                <div class="insight-action">
+                    <span>Confidence</span>
+                    <strong>94%</strong>
+                </div>
+
+            </div>
+
+
+            <!-- NEXT ACTION -->
+            <div class="next-action">
+
+                <div class="action-icon">→</div>
+
+                <div>
+                    <span>NEXT BEST ACTION</span>
+
+                    <h3>
+                        Review missing approval
+                        information
+                    </h3>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BOTTOM STATS -->
+    <footer class="bottom-bar">
+
+        <div class="stat">
+            <span>DOCUMENTS</span>
+            <strong id="statDocuments">3</strong>
+        </div>
+
+        <div class="stat">
+            <span>ENTITIES DETECTED</span>
+            <strong>27</strong>
+        </div>
+
+        <div class="stat">
+            <span>ISSUES FOUND</span>
+            <strong>04</strong>
+        </div>
+
+        <div class="stat">
+            <span>PROCESSING</span>
+            <strong class="processing-text">
+                ● ACTIVE
+            </strong>
+        </div>
+
+        <button class="copilot-button" id="copilotButton">
+            ✦ Ask Copilot
+        </button>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,972 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050914;
+    --panel: rgba(10, 18, 35, 0.82);
+    --border: rgba(89, 150, 255, 0.18);
+    --cyan: #35e8ff;
+    --blue: #4d7cff;
+    --purple: #a45cff;
+    --text: #eef5ff;
+    --muted: #7f91ad;
+    --green: #42e6a4;
+    --yellow: #ffd166;
+    --red: #ff5f73;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 45%, rgba(51, 92, 180, 0.12), transparent 30%),
+        radial-gradient(circle at 15% 20%, rgba(61, 214, 255, 0.06), transparent 25%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* BACKGROUND */
+
+.background-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image:
+        linear-gradient(rgba(80, 130, 220, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80, 130, 220, 0.06) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+
+/* HEADER */
+
+.topbar {
+    height: 86px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(4, 9, 20, 0.72);
+    backdrop-filter: blur(16px);
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(53, 232, 255, 0.5);
+    border-radius: 12px;
+    color: var(--cyan);
+    font-size: 24px;
+    background: rgba(53, 232, 255, 0.07);
+    box-shadow: 0 0 25px rgba(53, 232, 255, 0.12);
+}
+
+.brand h1 {
+    font-size: 20px;
+    letter-spacing: 0.2px;
+}
+
+.brand p {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.system-status {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #9db2ce;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot,
+.pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    background: var(--green);
+    box-shadow: 0 0 12px var(--green);
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+    min-height: calc(100vh - 146px);
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 270px minmax(420px, 1fr) 300px;
+    gap: 18px;
+}
+
+
+/* PANELS */
+
+.panel {
+    border: 1px solid var(--border);
+    background: linear-gradient(
+        145deg,
+        rgba(12, 23, 44, 0.88),
+        rgba(5, 12, 25, 0.82)
+    );
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 15px 50px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(15px);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.section-label {
+    color: var(--cyan);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.panel h2 {
+    font-size: 18px;
+    margin-top: 4px;
+}
+
+.count-badge,
+.live-badge {
+    padding: 5px 8px;
+    border-radius: 7px;
+    font-size: 9px;
+    font-weight: 700;
+    background: rgba(53, 232, 255, 0.09);
+    border: 1px solid rgba(53, 232, 255, 0.2);
+    color: var(--cyan);
+}
+
+
+/* UPLOAD */
+
+.upload-box {
+    border: 1px dashed rgba(86, 150, 255, 0.35);
+    border-radius: 13px;
+    padding: 20px 12px;
+    text-align: center;
+    background: rgba(46, 89, 160, 0.05);
+    transition: 0.25s ease;
+}
+
+.upload-box:hover {
+    border-color: var(--cyan);
+    background: rgba(53, 232, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: var(--cyan);
+    background: rgba(53, 232, 255, 0.08);
+    font-size: 22px;
+}
+
+.upload-box h3 {
+    margin-top: 11px;
+    font-size: 13px;
+}
+
+.upload-box p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 6px 0 13px;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #2458d9, #6940d8);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.upload-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(77, 124, 255, 0.25);
+}
+
+
+/* DOCUMENTS */
+
+.document-list {
+    margin-top: 17px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.document-card {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px;
+    border-radius: 11px;
+    border: 1px solid rgba(100, 140, 200, 0.1);
+    background: rgba(255, 255, 255, 0.025);
+    transition: 0.2s;
+}
+
+.document-card:hover {
+    border-color: rgba(53, 232, 255, 0.2);
+    background: rgba(53, 232, 255, 0.035);
+}
+
+.file-icon {
+    min-width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.file-icon.pdf {
+    color: #ff7181;
+    background: rgba(255, 95, 115, 0.1);
+}
+
+.file-icon.doc {
+    color: #6ca5ff;
+    background: rgba(77, 124, 255, 0.1);
+}
+
+.file-icon.txt {
+    color: #42e6a4;
+    background: rgba(66, 230, 164, 0.1);
+}
+
+.document-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.document-info strong {
+    display: block;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.document-info span {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin-top: 4px;
+}
+
+.document-status {
+    color: var(--green);
+    font-size: 12px;
+}
+
+
+/* CORE */
+
+.core-section {
+    position: relative;
+    min-width: 0;
+    border: 1px solid rgba(73, 122, 255, 0.12);
+    border-radius: 20px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(50, 95, 190, 0.09), transparent 35%),
+        rgba(3, 9, 20, 0.45);
+}
+
+.core-title {
+    position: absolute;
+    top: 22px;
+    left: 25px;
+    z-index: 3;
+}
+
+.core-title h2 {
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.core-title h2 span {
+    color: var(--cyan);
+    padding: 0 5px;
+}
+
+#three-container {
+    position: absolute;
+    inset: 0;
+}
+
+.core-overlay {
+    position: absolute;
+    left: 50%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+}
+
+.core-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-shadow: 0 0 15px rgba(53, 232, 255, 0.5);
+}
+
+.core-status {
+    color: #6f8bab;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-top: 9px;
+}
+
+
+/* PROCESS FLOW */
+
+.process-flow {
+    position: absolute;
+    bottom: 20px;
+    left: 22px;
+    right: 22px;
+    display: flex;
+    align-items: center;
+    z-index: 4;
+}
+
+.process-step {
+    min-width: 65px;
+    text-align: center;
+    color: #50627d;
+}
+
+.process-step span {
+    display: block;
+    font-size: 8px;
+    margin-bottom: 4px;
+}
+
+.process-step strong {
+    font-size: 9px;
+}
+
+.process-step.active {
+    color: #c8d9f2;
+}
+
+.process-step.active span {
+    color: var(--cyan);
+}
+
+.flow-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(53, 232, 255, 0.4),
+        rgba(100, 120, 180, 0.12)
+    );
+    margin: 0 5px;
+}
+
+
+/* INSIGHTS */
+
+.insights-panel {
+    overflow-y: auto;
+}
+
+.insight-card {
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.insight-card.urgent {
+    border-color: rgba(255, 95, 115, 0.2);
+}
+
+.insight-card.warning {
+    border-color: rgba(255, 209, 102, 0.18);
+}
+
+.insight-card.success {
+    border-color: rgba(66, 230, 164, 0.18);
+}
+
+.insight-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.priority-tag {
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+.priority-tag.high {
+    color: var(--red);
+    background: rgba(255, 95, 115, 0.08);
+}
+
+.priority-tag.medium {
+    color: var(--yellow);
+    background: rgba(255, 209, 102, 0.08);
+}
+
+.priority-tag.normal {
+    color: var(--green);
+    background: rgba(66, 230, 164, 0.08);
+}
+
+.insight-card h3 {
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.insight-card p {
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.55;
+    margin-top: 6px;
+}
+
+.insight-action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #647994;
+    font-size: 8px;
+}
+
+.insight-action strong {
+    color: #b7c8df;
+}
+
+
+/* NEXT ACTION */
+
+.next-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 14px;
+    border: 1px solid rgba(164, 92, 255, 0.2);
+    background: linear-gradient(
+        135deg,
+        rgba(164, 92, 255, 0.09),
+        rgba(53, 232, 255, 0.04)
+    );
+}
+
+.action-icon {
+    width: 33px;
+    height: 33px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: rgba(164, 92, 255, 0.14);
+    color: #c393ff;
+    font-size: 17px;
+}
+
+.next-action span {
+    font-size: 7px;
+    color: #aa8ad1;
+    letter-spacing: 1px;
+}
+
+.next-action h3 {
+    font-size: 9px;
+    line-height: 1.4;
+    margin-top: 4px;
+}
+
+
+/* BOTTOM */
+
+.bottom-bar {
+    height: 60px;
+    border-top: 1px solid var(--border);
+    background: rgba(4, 9, 20, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 0 25px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat span {
+    color: #61728c;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.stat strong {
+    font-size: 11px;
+}
+
+.processing-text {
+    color: var(--green);
+}
+
+.copilot-button {
+    margin-left: auto;
+    border: 1px solid rgba(53, 232, 255, 0.35);
+    border-radius: 9px;
+    padding: 9px 14px;
+    background: rgba(53, 232, 255, 0.07);
+    color: var(--cyan);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copilot-button:hover {
+    background: rgba(53, 232, 255, 0.14);
+    box-shadow: 0 0 20px rgba(53, 232, 255, 0.12);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1150px) {
+
+    .dashboard {
+        grid-template-columns: 230px 1fr;
+    }
+
+    .insights-panel {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .insights-panel .panel-header,
+    .next-action {
+        grid-column: 1 / -1;
+    }
+
+    .insight-card {
+        margin: 0;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .system-status {
+        display: none;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .core-section {
+        min-height: 520px;
+    }
+
+    .insights-panel {
+        display: block;
+    }
+
+    .bottom-bar {
+        height: auto;
+        padding: 14px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .copilot-button {
+        margin-left: 0;
+    }
+}
+/* =========================================================
+   BALANCED DASHBOARD LAYOUT
+   ========================================================= */
+
+.dashboard {
+    grid-template-columns: 1.15fr 1.7fr 1.15fr;
+    gap: 22px;
+}
+
+
+/* =========================================================
+   LEFT + RIGHT PANELS
+   ========================================================= */
+
+.documents-panel,
+.insights-panel {
+    min-width: 0;
+}
+
+.documents-panel {
+    padding: 22px;
+}
+
+.insights-panel {
+    padding: 22px;
+}
+
+
+/* =========================================================
+   CENTER PROCESSING AREA
+   ========================================================= */
+
+.core-section {
+    min-width: 0;
+}
+
+
+/* Make the 3D area slightly smaller */
+#three-container {
+    height: 390px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DOCUMENT CARDS
+   ========================================================= */
+
+.document-card {
+    min-height: 68px;
+    padding: 14px;
+}
+
+.document-info strong {
+    font-size: 14px;
+}
+
+.document-info span {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   INSIGHT CARDS
+   ========================================================= */
+
+.insight-card {
+    padding: 18px;
+    margin-bottom: 14px;
+}
+
+.insight-card h3 {
+    font-size: 16px;
+}
+
+.insight-card p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   UPLOAD AREA
+   ========================================================= */
+
+.upload-box {
+    padding: 25px 18px;
+}
+
+
+/* =========================================================
+   PROCESS FLOW
+   ========================================================= */
+
+.process-flow {
+    margin-top: 18px;
+}
+
+.process-step strong {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   NEXT ACTION
+   ========================================================= */
+
+.next-action {
+    padding: 17px;
+}
+
+.next-action h3 {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    #three-container {
+        max-width: 600px;
+        height: 420px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    #three-container {
+        height: 330px;
+    }
+
+    .process-flow {
+        overflow-x: auto;
+    }
+
+    .documents-panel,
+    .insights-panel {
+        padding: 16px;
+    }
+}
+/* =========================================================
+   BALANCED DASHBOARD LAYOUT
+   ========================================================= */
+
+.dashboard {
+    grid-template-columns: 1.15fr 1.7fr 1.15fr;
+    gap: 22px;
+}
+
+
+/* =========================================================
+   LEFT + RIGHT PANELS
+   ========================================================= */
+
+.documents-panel,
+.insights-panel {
+    min-width: 0;
+}
+
+.documents-panel {
+    padding: 22px;
+}
+
+.insights-panel {
+    padding: 22px;
+}
+
+
+/* =========================================================
+   CENTER PROCESSING AREA
+   ========================================================= */
+
+.core-section {
+    min-width: 0;
+}
+
+
+/* Make the 3D area slightly smaller */
+#three-container {
+    height: 390px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   DOCUMENT CARDS
+   ========================================================= */
+
+.document-card {
+    min-height: 68px;
+    padding: 14px;
+}
+
+.document-info strong {
+    font-size: 14px;
+}
+
+.document-info span {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   INSIGHT CARDS
+   ========================================================= */
+
+.insight-card {
+    padding: 18px;
+    margin-bottom: 14px;
+}
+
+.insight-card h3 {
+    font-size: 16px;
+}
+
+.insight-card p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   UPLOAD AREA
+   ========================================================= */
+
+.upload-box {
+    padding: 25px 18px;
+}
+
+
+/* =========================================================
+   PROCESS FLOW
+   ========================================================= */
+
+.process-flow {
+    margin-top: 18px;
+}
+
+.process-step strong {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   NEXT ACTION
+   ========================================================= */
+
+.next-action {
+    padding: 17px;
+}
+
+.next-action h3 {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    #three-container {
+        max-width: 600px;
+        height: 420px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    #three-container {
+        height: 330px;
+    }
+
+    .process-flow {
+        overflow-x: auto;
+    }
+
+    .documents-panel,
+    .insights-panel {
+        padding: 16px;
+    }
+}
+/* Move AI Core slightly downward */
+#three-container {
+    position: relative;
+    top: 45px;
+}
+/* =========================================================
+   CENTER THE ENTIRE 3D AI CORE
+   ========================================================= */
+
+#three-container {
+    position: relative;
+
+    /* move the COMPLETE 3D area downward */
+    transform: translateY(55px);
+}
